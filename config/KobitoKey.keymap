@@ -5,6 +5,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 // OS設定を日本語キーボードのまま使用するための変換定義
+
 #define JP_DQUOTE       AT                // "
 #define JP_AMPERSAND    CARET             // &
 #define JP_QUOTE        AMPERSAND         // '
@@ -73,10 +74,10 @@
         layer1 {
             label = "NUMBER";
             bindings = <
-&kp N0     &kp KP_N7  &kp KP_N8  &kp KP_N9  &trans  &kp MINUS  &trans     &kp UP    &trans     &trans
-&kp EQUAL  &kp KP_N4  &kp KP_N5  &kp KP_N6  &trans  &kp PLUS   &kp LEFT   &kp DOWN  &kp RIGHT  &trans
-&trans     &kp KP_N1  &kp KP_N2  &kp KP_N3  &trans  &kp ASTRK  &kp SLASH  &kp LBKT  &kp RBKT   &trans
-&trans     &kp KP_N0  &trans     &kp LSHFT  &trans  &trans     &trans     &trans    &trans     &trans
+&kp N0     &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp MINUS  &kp MINUS  &trans     &kp UP    &trans     &trans
+&kp EQUAL  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp PLUS   &kp PLUS   &kp LEFT   &kp DOWN  &kp RIGHT  &trans
+&trans     &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp DOT    &kp ASTRK  &kp SLASH  &kp LBKT  &kp RBKT   &trans
+&trans     &kp KP_N0  &trans     &kp LSHFT  &trans     &trans     &trans     &kp LCMD  &trans     &trans
             >;
         };
 
