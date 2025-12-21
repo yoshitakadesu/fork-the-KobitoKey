@@ -61,11 +61,13 @@
         combo_minus {
             bindings = <&kp MINUS>;
             key-positions = <8 9>;
+            timeout-ms = <50>;
         };
 
         combo_tilda {
             bindings = <&kp TILDE>;
             key-positions = <18 19>;
+            timeout-ms = <50>;
         };
     };
 
