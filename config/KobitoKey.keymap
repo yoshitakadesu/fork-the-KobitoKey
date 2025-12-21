@@ -57,6 +57,16 @@
             key-positions = <10 11>;
             bindings = <&kp TAB>;
         };
+
+        combo_minus {
+            bindings = <&kp MINUS>;
+            key-positions = <8 9>;
+        };
+
+        combo_tilda {
+            bindings = <&kp TILDE>;
+            key-positions = <18 19>;
+        };
     };
 
     keymap {
