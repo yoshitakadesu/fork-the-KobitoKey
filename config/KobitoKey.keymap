@@ -41,19 +41,19 @@
         };
 
         combo_kana {
-            timeout-ms = <50>;
+            timeout-ms = <60>;
             key-positions = <16 17>;
             bindings = <&kp LANG1>;
         };
 
         combo_esc {
-            timeout-ms = <50>;
+            timeout-ms = <60>;
             key-positions = <0 1>;
             bindings = <&kp ESC>;
         };
 
         combo_tab {
-            timeout-ms = <50>;
+            timeout-ms = <60>;
             key-positions = <10 11>;
             bindings = <&kp TAB>;
         };
@@ -61,13 +61,13 @@
         combo_minus {
             bindings = <&kp MINUS>;
             key-positions = <8 9>;
-            timeout-ms = <50>;
+            timeout-ms = <60>;
         };
 
         combo_tilda {
-            bindings = <&kp TILDE>;
+            bindings = <&kp JP_TILDE>;
             key-positions = <18 19>;
-            timeout-ms = <50>;
+            timeout-ms = <60>;
         };
 
         combo_psc {
