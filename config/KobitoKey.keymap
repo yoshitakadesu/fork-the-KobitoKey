@@ -94,7 +94,7 @@
 &kp KP_NUMBER_0  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp MINUS  &kp MINUS  &trans     &kp UP    &trans     &trans
 &kp EQUAL        &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp PLUS   &kp PLUS   &kp LEFT   &kp DOWN  &kp RIGHT  &trans
 &trans           &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp DOT    &kp ASTRK  &kp SLASH  &kp LBKT  &kp RBKT   &trans
-&trans           &trans     &trans     &kp LSHFT  &trans     &trans     &trans     &kp LCMD  &trans     &trans
+&trans           &trans     &trans     &kp LSHFT  &trans     &to 0      &trans     &kp LCMD  &trans     &trans
             >;
         };
 
@@ -111,10 +111,10 @@
         layer3 {
             label = "MOUSE";
             bindings = <
-&kp END    &kp HOME  &trans    &kp LS(LC(C))  &kp LC(C)  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans     &trans    &trans    &kt LS(LC(V))  &kp LC(V)  &trans  &trans    &trans    &trans    &trans
-&kp LCTRL  &trans    &trans    &trans         &trans     &trans  &trans    &trans    &trans    &trans
-&kp LSHFT  &trans    &kp LCMD  &kp LALT       &to 0      &trans  &trans    &trans    &to 0     &kp RALT
+&kp END    &kp HOME  &trans    &kp LS(LC(C))  &kp LC(C)  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
+&trans     &trans    &trans    &kt LS(LC(V))  &kp LC(V)  &trans    &trans    &trans    &trans  &trans
+&trans     &trans    &trans    &trans         &trans     &trans    &trans    &trans    &trans  &trans
+&kp LSHFT  &kp LALT  &kp LCMD  &trans         &kp LCTRL  &to 0     &trans    &trans    &trans  &trans
             >;
         };
     };
