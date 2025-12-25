@@ -111,10 +111,10 @@
         layer3 {
             label = "MOUSE";
             bindings = <
-&kp END    &kp HOME  &trans    &kp LC(LS(C))  &kp LC(C)  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
-&trans     &trans    &trans    &kp LC(LS(V))  &kp LC(V)  &trans    &trans    &trans    &trans  &trans
-&trans     &trans    &trans    &trans         &trans     &trans    &trans    &trans    &trans  &trans
-&kp LSHFT  &kp LALT  &kp LCMD  &trans         &kp LCTRL  &to 0     &trans    &trans    &trans  &trans
+&kp END    &kp HOME  &trans    &kp LC(LS(C))  &kp LC(C)  &mkp MB1  &mkp MB3   &mkp MB2  &trans  &trans
+&trans     &trans    &trans    &kp LC(LS(V))  &kp LC(V)  &trans    &trans     &trans    &trans  &trans
+&trans     &trans    &trans    &trans         &trans     &trans    &trans     &trans    &trans  &trans
+&kp LSHFT  &kp LALT  &kp LCMD  &trans         &kp LCTRL  &to 0     &kp ENTER  &trans    &trans  &trans
             >;
         };
     };
