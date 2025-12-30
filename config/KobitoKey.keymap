@@ -201,10 +201,10 @@
         layer2 {
             label = "FUNCTION";
             bindings = <
-&kp jis_1     &kp jis_2       &kp jis_3     &kp jis_4     &kp jis_5     &kp jis_6  &kp jis_7  &kp jis_8  &kp jis_9  &kp jis_0
-&trans        &trans          &trans        &trans        &trans        &kp F1     &kp F2     &kp F3     &kp F4     &kp F5
-&bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp F6     &kp F7     &kp F8     &kp F9     &kp F10
-&bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans        &kp DEL    &trans     &trans     &kp F11    &kp F12
+&jis_1        &jis_2          &jis_3        &jis_4        &jis_5        &jis_6   &jis_7  &jis_8  &jis_9   &kp N9
+&trans        &trans          &trans        &trans        &trans        &kp F1   &kp F2  &kp F3  &kp F4   &kp F5
+&bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp F6   &kp F7  &kp F8  &kp F9   &kp F10
+&bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans        &kp DEL  &trans  &trans  &kp F11  &kp F12
             >;
         };
 
