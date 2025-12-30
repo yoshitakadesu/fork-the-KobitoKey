@@ -75,7 +75,25 @@
             key-positions = <0 9>;
         };
     };
+    behaviors {
+        // [ と { を切り替える定義
+        lbr_morph: left_bracket_morph {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LBR_MORPH";
+            #binding-cells = <0>;
+            bindings = <&kp JP_LBRACKET>, <&kp JP_LBRACE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
 
+        // ] と } を切り替える定義
+        rbr_morph: right_bracket_morph {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RBR_MORPH";
+            #binding-cells = <0>;
+            bindings = <&kp JP_RBRACKET>, <&kp JP_RBRACE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
     keymap {
         compatible = "zmk,keymap";
 
