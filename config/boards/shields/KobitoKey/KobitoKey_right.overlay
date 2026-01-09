@@ -2,6 +2,10 @@
 #include "kobitokey.dtsi"
 #include <input/processors.dtsi>
 
+/* ▼▼▼ 追加する行ここから ▼▼▼ */
+&xiao_serial { status = "disabled"; };
+/* ▲▲▲ 追加する行ここまで ▲▲▲ */
+
 /* 列オフセット */
 &default_transform { col-offset = <5>; };
 
