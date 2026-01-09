@@ -74,6 +74,16 @@
             bindings = <&kp PRINTSCREEN>;
             key-positions = <0 9>;
         };
+
+        combo_caplock {
+            bindings = <&kp CAPSLOCK>;
+            key-positions = <2 3>;
+        };
+
+        combo_capwords {
+            bindings = <&caps_word>;
+            key-positions = <3 4>;
+        };
     };
     behaviors {
         // [ と { を切り替える定義
