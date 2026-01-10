@@ -21,6 +21,13 @@
                 <NRF_PSEL(SPIM_MISO, 0, 4)>;
         low-power-enable;
     }; };
+/* ▼▼▼ これを追加 ▼▼▼ */
+    spi3_default: spi3_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>; /* P0.06 (D6) をLED信号線として使用 */
+        };
+    };
+    /* ▲▲▲ ここまで ▲▲▲ */
 };
 
 &spi0 {
@@ -44,6 +51,29 @@
         y-input-code = <INPUT_REL_Y>;
     };
 };
+/* ▼▼▼ これを追加 ▼▼▼ */
+&spi3 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+    pinctrl-0 = <&spi3_default>;
+    pinctrl-names = "default";
+
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+        reg = <0>;
+        spi-max-frequency = <4000000>;
+
+        /* LEDの数（ここを実際の片側のLED数に合わせて変更してください） */
+        chain-length = <10>; 
+        
+        spi-one-frame = <0x70>;
+        spi-zero-frame = <0x40>;
+        
+        /* LEDの色順（色が変な場合はここを GRB や RGB に変えてください） */
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    };
+};
+/* ▲▲▲ ここまで ▲▲▲ */
 
 &tb_right_split {
     device = <&tb_right>;
