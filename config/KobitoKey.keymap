@@ -76,7 +76,7 @@
         };
 
         combo_caplock {
-            bindings = <&kp CAPSLOCK>;
+            bindings = <&kp LS(CAPSLOCK)>;
             key-positions = <2 3>;
         };
 
