@@ -82,6 +82,11 @@
         
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
-        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+
+        /* ▼▼▼ 修正箇所: 色の順番を RGB に変更してみる ▼▼▼ */
+        /* color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>; */
+        color-mapping = <LED_COLOR_ID_RED LED_COLOR_ID_GREEN LED_COLOR_ID_BLUE>;
+        
+        /* もしこれで色が直らない場合は、再び元の順序に戻してください */
     };
 };
