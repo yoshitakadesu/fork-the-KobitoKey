@@ -77,16 +77,18 @@
         reg = <0>;
         spi-max-frequency = <4000000>;
 
-        /* 右手側のLEDの数を正確に入力してください */
         chain-length = <10>; 
         
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
 
-        /* ▼▼▼ 修正箇所: 色の順番を RGB に変更してみる ▼▼▼ */
-        /* color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>; */
-        color-mapping = <LED_COLOR_ID_RED LED_COLOR_ID_GREEN LED_COLOR_ID_BLUE>;
+        /* ▼▼▼ ここを修正 ▼▼▼ */
+        /* 赤と青が入れ替わっている可能性が高いので、順番を変えてみます */
+        /* パターンA: 多くの互換LEDはこれ */
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_BLUE LED_COLOR_ID_RED>;
         
-        /* もしこれで色が直らない場合は、再び元の順序に戻してください */
+        /* もしパターンAでも色が変なら、以下（パターンB）を試してください
+           color-mapping = <LED_COLOR_ID_BLUE LED_COLOR_ID_GREEN LED_COLOR_ID_RED>; 
+        */
     };
 };
