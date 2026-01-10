@@ -1,4 +1,5 @@
 #include <zephyr/dt-bindings/pinctrl/nrf-pinctrl.h>
+#include <dt-bindings/led/led.h>  /* ▼▼▼ これが不足していました ▼▼▼ */
 #include "kobitokey.dtsi"
 #include <input/processors.dtsi>
 
@@ -22,7 +23,7 @@
         low-power-enable;
     }; };
 
-    /* ▼▼▼ 追加: LED用のピン設定 (P0.06) ▼▼▼ */
+    /* LED用のピン設定 (P0.06) */
     spi3_default: spi3_default {
         group1 {
             psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
@@ -58,7 +59,7 @@
     input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
 };
 
-/* ▼▼▼ 追加: LEDドライバ (WS2812B) の設定 ▼▼▼ */
+/* LEDドライバ (WS2812B) の設定 */
 &spi3 {
     compatible = "nordic,nrf-spim";
     status = "okay";
@@ -70,7 +71,7 @@
         reg = <0>;
         spi-max-frequency = <4000000>;
 
-        /* LEDの数（実際の数に合わせてください） */
+        /* LEDの数（片手分のLEDの個数に変更してください） */
         chain-length = <10>; 
         
         spi-one-frame = <0x70>;
