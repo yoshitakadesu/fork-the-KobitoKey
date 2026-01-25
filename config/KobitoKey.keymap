@@ -228,6 +228,69 @@
             bindings = <&kp 0x87>, <&kp JP_UNDERSCORE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        // Bluetooth Select 0 (Ctrl時のみ有効)
+        bt_0: bt_profile_0_safe {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BT_0_SAFE";
+            #binding-cells = <0>;
+            bindings = <&none>, <&bt BT_SEL 0>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        // Bluetooth Select 1
+        bt_1: bt_profile_1_safe {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BT_1_SAFE";
+            #binding-cells = <0>;
+            bindings = <&none>, <&bt BT_SEL 1>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        // Bluetooth Select 2
+        bt_2: bt_profile_2_safe {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BT_2_SAFE";
+            #binding-cells = <0>;
+            bindings = <&none>, <&bt BT_SEL 2>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        // Bluetooth Select 3
+        bt_3: bt_profile_3_safe {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BT_3_SAFE";
+            #binding-cells = <0>;
+            bindings = <&none>, <&bt BT_SEL 3>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        // Bluetooth Select 4
+        bt_4: bt_profile_4_safe {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BT_4_SAFE";
+            #binding-cells = <0>;
+            bindings = <&none>, <&bt BT_SEL 4>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        // Bluetooth Clear (ペアリング解除)
+        bt_clr: bt_clear_safe {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BT_CLR_SAFE";
+            #binding-cells = <0>;
+            bindings = <&none>, <&bt BT_CLR>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        // Bluetooth Clear All (全削除)
+        bt_all: bt_clear_all_safe {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BT_ALL_SAFE";
+            #binding-cells = <0>;
+            bindings = <&none>, <&bt BT_CLR_ALL>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
     };
     keymap {
         compatible = "zmk,keymap";
@@ -237,27 +300,27 @@
 &kp Q      &kp W      &kp E     &kp R        &kp T      &kp Y     &kp U        &kp I       &kp O      &kp P
 &kp A      &kp S      &kp D     &kp F        &kp G      &kp H     &kp J        &kp K       &kp L      &kp SEMI
 &kp Z      &kp X      &kp C     &kp V        &kp B      &kp N     &kp M        &kp COMMA   &kp DOT    &kp APOS
-&kp LCTRL  &kp LSHFT  &kp LALT  &lt 2 SPACE  &kp LCMD   &kp BSPC  &lt 1 ENTER  &kp DELETE  &kp LSHFT  &kp SLASH
+&kp LCTRL  &kp LSHFT  &kp LALT  &lt 2 SPACE  &kp LCMD   &kp BSPC  &lt 1 ENTER  &kp DELETE  &kp SLASH  &kp KP_ENTER
             >;
         };
 
         layer1 {
             label = "NUMBER";
             bindings = <
-&trans        &kp KP_N0     &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp MINUS        &kp HOME   &kp UP      &kp END     &pipe_morph
-&trans        &kp JP_EQUAL  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp JP_PLUS      &kp LEFT   &kp DOWN    &kp RIGHT   &at_morph
-&trans        &trans        &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp JP_ASTERISK  &kp SLASH  &lbr_morph  &rbr_morph  &caret_morph
-&trans        &trans        &trans     &kp LSHFT  &trans     &to 0            &trans     &kp LCMD    &trans      &under_morph
+&trans  &kp KP_N0     &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp MINUS        &kp HOME   &kp UP      &kp END       &pipe_morph
+&trans  &kp JP_EQUAL  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp JP_PLUS      &kp LEFT   &kp DOWN    &kp RIGHT     &at_morph
+&trans  &trans        &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp JP_ASTERISK  &kp SLASH  &lbr_morph  &rbr_morph    &caret_morph
+&trans  &trans        &trans     &trans     &trans     &trans           &trans     &trans      &under_morph  &trans      
             >;
         };
 
         layer2 {
             label = "FUNCTION";
             bindings = <
-&jis_1        &jis_2        &jis_3        &jis_4        &jis_5        &jis_6      &jis_7          &jis_8    &jis_9   &kp N0
-&kp F1        &kp F2        &kp F3        &kp F4        &kp F5        &kp F6      &kp F7          &kp F8    &kp F9   &kp F10
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR  &bt BT_CLR_ALL  &trans    &kp F11  &kp F12
-&trans        &trans        &trans        &trans        &trans        &kp RSHFT   &trans          &kp BSPC  &trans   &trans
+&jis_1  &jis_2  &jis_3  &jis_4  &jis_5  &jis_6   &jis_7   &jis_8     &jis_9   &kp N0
+&kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6   &kp F7   &kp F8     &kp F9   &kp F10
+&bt_0   &bt_1   &bt_2   &bt_3   &bt_4   &bt_clr  &bt_all  &kp RSHFT  &kp F11  &kp F12
+&trans  &trans  &trans  &trans  &trans  &trans   &trans   &trans     &trans   &trans
             >;
         };
 
