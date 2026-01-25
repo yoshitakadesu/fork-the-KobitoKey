@@ -91,8 +91,8 @@
         to_layer_0_delay: to_layer_0_delay {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_pause_for_release>, <&macro_wait_time 50>, <&to 0>;
-        };
+            /* ▼ 50 を 200 に変更 ▼ */
+            bindings = <&macro_pause_for_release>, <&macro_wait_time 200>, <&to 0>;        };
     };
 
     behaviors {
