@@ -1,11 +1,23 @@
 #include <zephyr/dt-bindings/pinctrl/nrf-pinctrl.h>
+#include <dt-bindings/led/led.h>
 #include "kobitokey.dtsi"
 #include <input/processors.dtsi>
+
+/* シリアル通信を無効化 */
+&xiao_serial { status = "disabled"; };
+
+/* システムにLEDを認識させる */
+/ {
+    chosen {
+        zmk,underglow = &led_strip;
+    };
+};
 
 /* 列オフセット */
 &default_transform { col-offset = <5>; };
 
 &pinctrl {
+    /* トラボ用SPI設定 */
     spi0_default_r: spi0_default_r { group1 {
         psels = <NRF_PSEL(SPIM_SCK,  0, 5)>,
                 <NRF_PSEL(SPIM_MOSI, 0, 4)>,
@@ -17,6 +29,13 @@
                 <NRF_PSEL(SPIM_MISO, 0, 4)>;
         low-power-enable;
     }; };
+
+    /* ▼▼▼ 追加: LED用ピン設定 (P0.06) ▼▼▼ */
+    spi3_default: spi3_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
+        };
+    };
 };
 
 &spi0 {
@@ -44,4 +63,26 @@
 &tb_right_split {
     device = <&tb_right>;
     input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
+};
+
+/* ▼▼▼ 追加: LEDドライバの設定 ▼▼▼ */
+&spi3 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+    pinctrl-0 = <&spi3_default>;
+    pinctrl-names = "default";
+
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+        reg = <0>;
+        spi-max-frequency = <4000000>;
+
+        /* LEDの数 */
+        chain-length = <10>; 
+        
+        spi-one-frame = <0x70>;
+        spi-zero-frame = <0x40>;
+        /* 色がおかしい場合はここを調整 (GREEN, RED, BLUE) */
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    };
 };
