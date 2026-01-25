@@ -85,15 +85,16 @@
             key-positions = <3 4>;
         };
     };
+
     macros {
-        /* 150ms待ってからレイヤー0に戻るマクロ */
+        /* 指が離れてから50ms待って（チャタリング防止）、レイヤー0に戻る */
         to_layer_0_delay: to_layer_0_delay {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            // 指が離れるまで待機してから、レイヤーを0にする
-            bindings = <&macro_pause_for_release>, <&to 0>;
+            bindings = <&macro_pause_for_release>, <&macro_wait_time 50>, <&to 0>;
         };
     };
+
     behaviors {
         // [ と { を切り替える定義
         lbr_morph: left_bracket_morph {
