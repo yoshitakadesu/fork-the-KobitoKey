@@ -329,7 +329,7 @@
         layer3 {
             label = "MOUSE";
             bindings = <
-&trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans    &trans             &mkp MB1  &mkp MB3  &mkp MB2  &trans
+&trans  &mkp MB2  &mkp MB3  &mkp MB1  &trans    &trans             &mkp MB1  &mkp MB3  &mkp MB2  &trans
 &trans  &trans    &trans    &trans    &mkp MB4  &mkp MB5           &trans    &trans    &trans    &trans
 &trans  &trans    &trans    &trans    &trans    &trans             &trans    &trans    &trans    &trans
 &trans  &trans    &trans    &trans    &trans    &to_layer_0_delay  &trans    &trans    &trans    &trans
