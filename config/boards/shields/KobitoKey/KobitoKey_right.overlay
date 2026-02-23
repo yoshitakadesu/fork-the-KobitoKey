@@ -52,7 +52,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* ←これを追加 */
-        res-cpi = <600>;
+        res-cpi = <1000>;
         
         zephyr,axis-x = <INPUT_REL_X>; /* ←これを追加 */
         zephyr,axis-y = <INPUT_REL_Y>; /* ←これを追加 */
