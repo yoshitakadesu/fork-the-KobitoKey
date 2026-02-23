@@ -61,7 +61,7 @@
 
 &tb_right_split {
     device = <&tb_right>;
-    input-processors = <&zip_xy_transform INPUT_TRANSFORM_X_INVERT>;
+    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>;
 };
 
 /* ▼▼▼ 追加: LEDドライバの設定 ▼▼▼ */
