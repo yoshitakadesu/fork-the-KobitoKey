@@ -52,7 +52,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* ←これを追加 */
-        cpi = <600>;
+        res-cpi = <600>;
         
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
