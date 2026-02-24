@@ -55,6 +55,7 @@
         
         zephyr,axis-x = <INPUT_REL_X>; /* ←これを追加 */
         zephyr,axis-y = <INPUT_REL_Y>; /* ←これを追加 */
+        force-awake;
     };
 };
 
