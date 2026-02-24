@@ -27,7 +27,7 @@
         psels = <NRF_PSEL(SPIM_SCK,  0, 5)>,
                 <NRF_PSEL(SPIM_MOSI, 0, 4)>,
                 <NRF_PSEL(SPIM_MISO, 0, 4)>;
-        low-power-enable;
+        # low-power-enable;
     }; };
 
     /* ▼▼▼ 追加: LED用ピン設定 (P0.06) ▼▼▼ */
@@ -56,6 +56,7 @@
         
         zephyr,axis-x = <INPUT_REL_X>; /* ←これを追加 */
         zephyr,axis-y = <INPUT_REL_Y>; /* ←これを追加 */
+        force-awake;   /* ← この1行を追加します */
     };
 };
 
