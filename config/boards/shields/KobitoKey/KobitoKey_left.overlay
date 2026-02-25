@@ -82,7 +82,7 @@
 
 &tb_right_listener {
     status = "okay";
-
+    device = <&tb_right_split>;   /* ← これを追加 */
     input-processors =
         <&sensor_rotation_right>,
         <&zip_temp_layer 3 5000>; /* オートマウスレイヤーの指定とトラボ操作及びマウスボタン押下後に滞留する時間 */
