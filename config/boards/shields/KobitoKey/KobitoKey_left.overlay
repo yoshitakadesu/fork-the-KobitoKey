@@ -69,14 +69,14 @@
 &tb_left_listener {
     status = "okay";
     device = <&tb_left>;
-
     input-processors =
             <&sensor_rotation_left>,
             <&zip_x_scaler 0 1>,
             <&zip_y_scaler 1 15>,
             <&zip_xy_to_scroll_mapper>,
-            <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>;
-    };
+            /* ▼ 既存のX_INVERTに、Y_INVERTを追加して両方反転させます ▼ */
+            <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+};
 
 / {
   /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
