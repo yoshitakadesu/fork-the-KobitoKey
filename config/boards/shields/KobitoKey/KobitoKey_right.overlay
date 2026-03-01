@@ -54,8 +54,14 @@
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;     /* ← こう戻す！ */
         res-cpi = <1000>;
         
-        zephyr,axis-x = <INPUT_REL_X>; /* ←これを追加 */
-        zephyr,axis-y = <INPUT_REL_Y>; /* ←これを追加 */
+        /* ▼▼▼ 追加する部分 ▼▼▼ */
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
+
+        /* ▼▼▼ 削除する部分（これらはもう書きません） ▼▼▼ */
+        /* zephyr,axis-x = <INPUT_REL_X>; */
+        /* zephyr,axis-y = <INPUT_REL_Y>; */
         force-awake;
     };
 };
