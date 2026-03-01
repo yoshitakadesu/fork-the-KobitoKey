@@ -68,8 +68,8 @@
 
 &tb_right_split {
     device = <&tb_right>;
-    /* ▼ X軸とY軸を入れ替え(SWAP)し、さらにXとYの両方を反転(INVERT)させます ▼ */
-    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+    /* ▼ 余計なSWAPを消して、Y軸の反転だけにします ▼ */
+    input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
 };
 
 /* ▼▼▼ 追加: LEDドライバの設定 ▼▼▼ */
