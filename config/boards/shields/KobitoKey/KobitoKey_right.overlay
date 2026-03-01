@@ -47,7 +47,8 @@
     
     tb_right: trackball@0 {
         status = "okay";
-        compatible = "pixart,pmw3610";
+        // 変更後（遅延のないZMK専用カスタムドライバを指定！）
+        compatible = "pixart,pmw3610-alt";
         reg = <0>;
         spi-max-frequency = <2000000>;
         motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* ←これを追加 */
