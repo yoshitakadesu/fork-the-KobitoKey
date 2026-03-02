@@ -59,6 +59,8 @@
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
 
+        force-awake;
+
         /* ▼▼▼ 削除する部分（これらはもう書きません） ▼▼▼ */
         /* zephyr,axis-x = <INPUT_REL_X>; */
         /* zephyr,axis-y = <INPUT_REL_Y>; */
