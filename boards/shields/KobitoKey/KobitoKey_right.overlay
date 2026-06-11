@@ -62,7 +62,8 @@
 
 &tb_right_split {
     device = <&tb_right>;
-    input-processors = <&zip_xy_transform 0>; /* 💡 INPUT_TRANSFORM_Y_INVERT から 0 に変更 */
+    /* 💡 XYのスワップと、X軸の反転を組み合わせて90度のねじれを直します */
+    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
 };
 
 /* LEDドライバの設定 */
