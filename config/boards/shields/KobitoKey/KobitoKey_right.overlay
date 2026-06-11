@@ -29,7 +29,7 @@
                 <NRF_PSEL(SPIM_MISO, 0, 4)>;
     }; };
 
-    /* ▼▼▼ 追加: LED用ピン設定 (P0.06) ▼▼▼ */
+    /* LED用ピン設定 (P0.06) */
     spi3_default: spi3_default {
         group1 {
             psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
@@ -47,33 +47,25 @@
     
     tb_right: trackball@0 {
         status = "okay";
-        // 変更後（遅延のないZMK専用カスタムドライバを指定！）
-        compatible = "pixart,pmw3610-alt";
+        compatible = "pixart,pmw3610";
         reg = <0>;
         spi-max-frequency = <2000000>;
-        irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;     /* ← こう戻す！ */
-        cpi = <600>;
         
-        /* ▼▼▼ 追加する部分 ▼▼▼ */
-        evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_X>;
-        y-input-code = <INPUT_REL_Y>;
-
-        force-awake;
-
-        /* ▼▼▼ 削除する部分（これらはもう書きません） ▼▼▼ */
-        /* zephyr,axis-x = <INPUT_REL_X>; */
-        /* zephyr,axis-y = <INPUT_REL_Y>; */
+        /* 公式ドライバー仕様に適合 */
+        motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        zephyr,axis-x = <INPUT_REL_X>;
+        zephyr,axis-y = <INPUT_REL_Y>;
+        res-cpi = <600>;
+        smart-mode;
     };
 };
 
 &tb_right_split {
     device = <&tb_right>;
-    /* ▼ 余計なSWAPを消して、Y軸の反転だけにします ▼ */
     input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
 };
 
-/* ▼▼▼ 追加: LEDドライバの設定 ▼▼▼ */
+/* LEDドライバの設定 */
 &spi3 {
     compatible = "nordic,nrf-spim";
     status = "okay";
@@ -84,13 +76,9 @@
         compatible = "worldsemi,ws2812-spi";
         reg = <0>;
         spi-max-frequency = <4000000>;
-
-        /* LEDの数 */
         chain-length = <10>; 
-        
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
-        /* 色がおかしい場合はここを調整 (GREEN, RED, BLUE) */
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
     };
 };
