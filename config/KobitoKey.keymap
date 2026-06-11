@@ -4,8 +4,12 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-// OS設定を日本語キーボードのまま使用するための変換定義
+/* ルートノードの直前に追記：NFCピンを通常のGPIOとして開放 */
+&uicr {
+    nfct-pins-as-gpios;
+};
 
+// OS設定を日本語キーボードのまま使用するための変換定義
 #define JP_DQUOTE       AT                // "
 #define JP_AMPERSAND    CARET             // &
 #define JP_QUOTE        AMPERSAND         // '
@@ -33,13 +37,11 @@
 / {
     combos {
         compatible = "zmk,combos";
-
         combo_reset {
             timeout-ms = <50>;
             key-positions = <4 5>;
             bindings = <&sys_reset>;
         };
-
 
         combo_eisu {
             timeout-ms = <50>;
@@ -94,16 +96,14 @@
     };
 
     macros {
-        /* 指が離れてから50ms待って（チャタリング防止）、レイヤー0に戻る */
         to_layer_0_delay: to_layer_0_delay {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            /* ▼ 50 を 200 に変更 ▼ */
-            bindings = <&macro_pause_for_release>, <&macro_wait_time 200>, <&to 0>;        };
+            bindings = <&macro_pause_for_release>, <&macro_wait_time 200>, <&to 0>;
+        };
     };
 
     behaviors {
-        // [ と { を切り替える定義
         lbr_morph: left_bracket_morph {
             compatible = "zmk,behavior-mod-morph";
             label = "LBR_MORPH";
@@ -111,8 +111,6 @@
             bindings = <&kp JP_LBRACKET>, <&kp JP_LBRACE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // ] と } を切り替える定義
         rbr_morph: right_bracket_morph {
             compatible = "zmk,behavior-mod-morph";
             label = "RBR_MORPH";
@@ -121,7 +119,6 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        // 1 -> !
         jis_1: jis_number_1 {
             compatible = "zmk,behavior-mod-morph";
             label = "JIS_1";
@@ -129,8 +126,6 @@
             bindings = <&kp N1>, <&kp EXCL>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // 2 -> "
         jis_2: jis_number_2 {
             compatible = "zmk,behavior-mod-morph";
             label = "JIS_2";
@@ -138,8 +133,6 @@
             bindings = <&kp N2>, <&kp JP_DQUOTE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // 3 -> #
         jis_3: jis_number_3 {
             compatible = "zmk,behavior-mod-morph";
             label = "JIS_3";
@@ -147,8 +140,6 @@
             bindings = <&kp N3>, <&kp HASH>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // 4 -> $
         jis_4: jis_number_4 {
             compatible = "zmk,behavior-mod-morph";
             label = "JIS_4";
@@ -156,8 +147,6 @@
             bindings = <&kp N4>, <&kp DLLR>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // 5 -> %
         jis_5: jis_number_5 {
             compatible = "zmk,behavior-mod-morph";
             label = "JIS_5";
@@ -165,8 +154,6 @@
             bindings = <&kp N5>, <&kp PRCNT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // 6 -> &
         jis_6: jis_number_6 {
             compatible = "zmk,behavior-mod-morph";
             label = "JIS_6";
@@ -174,8 +161,6 @@
             bindings = <&kp N6>, <&kp JP_AMPERSAND>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // 7 -> '
         jis_7: jis_number_7 {
             compatible = "zmk,behavior-mod-morph";
             label = "JIS_7";
@@ -183,8 +168,6 @@
             bindings = <&kp N7>, <&kp JP_QUOTE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // 8 -> (
         jis_8: jis_number_8 {
             compatible = "zmk,behavior-mod-morph";
             label = "JIS_8";
@@ -192,8 +175,6 @@
             bindings = <&kp N8>, <&kp JP_LPAREN>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // 9 -> )
         jis_9: jis_number_9 {
             compatible = "zmk,behavior-mod-morph";
             label = "JIS_9";
@@ -201,8 +182,6 @@
             bindings = <&kp N9>, <&kp JP_RPAREN>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // ^ と ~ を切り替える定義
         caret_morph: caret_morph {
             compatible = "zmk,behavior-mod-morph";
             label = "CARET_MORPH";
@@ -210,8 +189,6 @@
             bindings = <&kp JP_CARET>, <&kp JP_TILDE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // ¥(\) と | を切り替える定義 (JISの右上のキー)
         pipe_morph: pipe_morph {
             compatible = "zmk,behavior-mod-morph";
             label = "PIPE_MORPH";
@@ -219,8 +196,6 @@
             bindings = <&kp JP_YEN>, <&kp JP_PIPE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // @ と ` を切り替える定義 (JISのPの右)
         at_morph: at_morph {
             compatible = "zmk,behavior-mod-morph";
             label = "AT_MORPH";
@@ -228,8 +203,6 @@
             bindings = <&kp JP_AT>, <&kp JP_BACKQUOTE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // \ と _ を切り替える定義 (JISの右Shiftの左 / ろ)
         under_morph: under_morph {
             compatible = "zmk,behavior-mod-morph";
             label = "UNDER_MORPH";
@@ -237,8 +210,6 @@
             bindings = <&kp 0x87>, <&kp JP_UNDERSCORE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
-        // Bluetooth Select 0 (Ctrl時のみ有効)
         bt_0: bt_profile_0_safe {
             compatible = "zmk,behavior-mod-morph";
             label = "BT_0_SAFE";
@@ -246,8 +217,6 @@
             bindings = <&none>, <&bt BT_SEL 0>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
-
-        // Bluetooth Select 1
         bt_1: bt_profile_1_safe {
             compatible = "zmk,behavior-mod-morph";
             label = "BT_1_SAFE";
@@ -255,8 +224,6 @@
             bindings = <&none>, <&bt BT_SEL 1>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
-
-        // Bluetooth Select 2
         bt_2: bt_profile_2_safe {
             compatible = "zmk,behavior-mod-morph";
             label = "BT_2_SAFE";
@@ -264,8 +231,6 @@
             bindings = <&none>, <&bt BT_SEL 2>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
-
-        // Bluetooth Select 3
         bt_3: bt_profile_3_safe {
             compatible = "zmk,behavior-mod-morph";
             label = "BT_3_SAFE";
@@ -273,8 +238,6 @@
             bindings = <&none>, <&bt BT_SEL 3>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
-
-        // Bluetooth Select 4
         bt_4: bt_profile_4_safe {
             compatible = "zmk,behavior-mod-morph";
             label = "BT_4_SAFE";
@@ -282,8 +245,6 @@
             bindings = <&none>, <&bt BT_SEL 4>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
-
-        // Bluetooth Clear (ペアリング解除)
         bt_clr: bt_clear_safe {
             compatible = "zmk,behavior-mod-morph";
             label = "BT_CLR_SAFE";
@@ -291,8 +252,6 @@
             bindings = <&none>, <&bt BT_CLR>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
-
-        // Bluetooth Clear All (全削除)
         bt_all: bt_clear_all_safe {
             compatible = "zmk,behavior-mod-morph";
             label = "BT_ALL_SAFE";
@@ -301,9 +260,9 @@
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
     };
+
     keymap {
         compatible = "zmk,keymap";
-
         default_layer {
             bindings = <
 &kp Q      &kp W      &kp E      &kp R        &kp T      &kp Y     &kp U        &kp I       &kp O      &kp P
