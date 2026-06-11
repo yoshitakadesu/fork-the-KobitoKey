@@ -63,7 +63,7 @@
 &tb_right_split {
     device = <&tb_right>;
     /* 💡 XYのスワップと、X軸の反転を組み合わせて90度のねじれを直します */
-    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
+    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>;
 };
 
 /* LEDドライバの設定 */
