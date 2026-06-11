@@ -62,8 +62,8 @@
 
 &tb_right_split {
     device = <&tb_right>;
-    /* 💡 Y_INVERTを削除して、左右の逆転を直します */
-    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
+    /* 💡 画面の左右（X）の反転を解除し、正しかった上下（Y）の反転だけを残します */
+    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>;
 };
 
 /* LEDドライバの設定 */
