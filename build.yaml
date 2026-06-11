@@ -8,5 +8,5 @@ include:
     shield: KobitoKey_right rgbled_adapter
     artifact-name: kobitoKey_right
 
-  - board: xiao_ble//zmk
+  - board: xiao_ble
     shield: settings_reset
