@@ -1,11 +1,10 @@
-file_format: 1
+file_format: "1"
 id: KobitoKey
 name: KobitoKey
 type: shield
-url: https://github.com/juichi50iii/KobitoKey_QWERTY
-# ↓ここのパスから「boards/」を削って以下のようにします
-features:
-  - keys
-siblings:
+targets:
   - KobitoKey_left
   - KobitoKey_right
+requires: [xiao_ble]
+features:
+  - keys
