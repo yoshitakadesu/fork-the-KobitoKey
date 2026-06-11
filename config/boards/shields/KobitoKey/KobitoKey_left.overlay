@@ -4,7 +4,6 @@
 #include <input/processors/sensor_rotation.dtsi>
 
 &xiao_serial { status = "disabled"; };
-
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -32,21 +31,16 @@
 
     tb_left: trackball@0 {
         status = "okay";
-        // 変更後（遅延のないZMK専用カスタムドライバを指定！）
-        compatible = "pixart,pmw3610-alt";
+        compatible = "pixart,pmw3610";
         reg = <0>;
         spi-max-frequency = <2000000>;
-        irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;     /* ← こう戻す！ */
-        cpi = <200>; /* センサー感度 */
-
-        /* ▼▼▼ 追加する部分 ▼▼▼ */
-        evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_X>;
-        y-input-code = <INPUT_REL_Y>;
-
-        /* ▼▼▼ 削除する部分（これらはもう書きません） ▼▼▼ */
-        /* zephyr,axis-x = <INPUT_REL_X>; */
-        /* zephyr,axis-y = <INPUT_REL_Y>; */
+        
+        /* 割り込みピンと軸マッピング、解像度、スマートモードを新仕様に適合 */
+        motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        zephyr,axis-x = <INPUT_REL_X>;
+        zephyr,axis-y = <INPUT_REL_Y>;
+        res-cpi = <200>;
+        smart-mode;
     };
 };
 
@@ -57,7 +51,6 @@
         #input-processor-cells = <0>;
         rotation-angle = <(-24)>;
     };
-
     sensor_rotation_right: sensor-rotation-right {
         compatible = "zmk,input-processor-sensor-rotation";
         #input-processor-cells = <0>;
@@ -70,45 +63,31 @@
     status = "okay";
     device = <&tb_left>;
     input-processors =
-            <&sensor_rotation_left>,
-            <&zip_x_scaler 0 1>,
-            <&zip_y_scaler 1 8>,
-            <&zip_xy_to_scroll_mapper>,
-            /* ▼ 既存のX_INVERTに、Y_INVERTを追加して両方反転させます ▼ */
-            <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+        <&sensor_rotation_left>,
+        <&zip_x_scaler 0 1>,
+        <&zip_y_scaler 1 8>,
+        <&zip_xy_to_scroll_mapper>,
+        <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 };
 
 / {
   /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
     compatible = "zmk,input-processor-temp-layer";
     #input-processor-cells = <2>;
-    require-prior-idle-ms = <500>; /* キー押下後、何msオートマウスレイヤに入らないようにするか、誤爆防止 */
+    require-prior-idle-ms = <500>;
   };
 };
 
 &tb_right_listener {
     status = "okay";
-    device = <&tb_right_split>;   /* ← これを追加 */
+    device = <&tb_right_split>;
     input-processors =
         <&sensor_rotation_right>,
-        <&zip_temp_layer 3 5000>; /* オートマウスレイヤーの指定とトラボ操作及びマウスボタン押下後に滞留する時間 */
+        <&zip_temp_layer 3 5000>;
 };
 
 &zip_temp_layer {
     excluded-positions = <
-        1
-        2
-        3
-        6
-        7
-        8
-        14
-        15
-        31
-        32
-        34
-        35
-        36
-        39
+        1  2  3  6  7  8  14  15  31  32  34  35  36  39
     >;
 };
