@@ -40,7 +40,7 @@
         zephyr,axis-x = <INPUT_REL_X>;
         zephyr,axis-y = <INPUT_REL_Y>;
         res-cpi = <200>;
-        smart-mode;
+/* ❌ smart-mode; はノイズで泳ぐ原因になるため完全に削除！ */
     };
 };
 
