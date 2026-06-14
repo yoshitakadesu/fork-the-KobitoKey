@@ -94,7 +94,7 @@
 
         combo_caplock {
             bindings = <&kp LS(CAPSLOCK)>;
-            key-positions = <2 3>;
+            key-positions = <20 21>;
         };
 
         combo_capwords {
@@ -296,10 +296,10 @@
         layer3 {
             label = "MOUSE";
             bindings = <
-&kp LALT   &mkp MB2   &mkp MB3   &mkp MB1   &kp SPACE  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&kp LSHIFT &trans     &trans     &trans     &kp LCTRL  &trans  &trans    &trans    &trans    &trans
-&kp LCTRL  &trans     &trans     &trans     &kp LALT   &trans  &trans    &trans    &trans    &trans
-&trans     &trans     &trans     &trans     &trans     &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
             >;
         };
     };
