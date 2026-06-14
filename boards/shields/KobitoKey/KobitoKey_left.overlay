@@ -88,13 +88,16 @@
 &tb_right_listener {
     status = "okay";
     device = <&tb_right_split>;
-    input-processors =
+    /* input-processors =
         <&sensor_rotation_right>,
-        <&zip_temp_layer 3 5000>;
+        <&zip_temp_layer 3 5000>; */
+    /* 💡 角度補正だけを残し、<&zip_temp_layer 3 5000>（自動レイヤー突入命令）を完全に削除します！ */
+    input-processors = <&sensor_rotation_right>;
+
 };
 
-&zip_temp_layer {
+/* &zip_temp_layer {
     excluded-positions = <
         1  2  3  6  7  8  14  15  31  32  34  35  36  39
     >;
-};
+}; */
