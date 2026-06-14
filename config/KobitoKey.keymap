@@ -38,7 +38,7 @@
     combos {
         compatible = "zmk,combos";
 
-        /* ✨ 新設：右手の上段「U + I」の同時押しで、マウスレイヤーをカチッとON/OFF（トグル）切り替え */
+        /* ✨ 右手の上段「U + I」の同時押しで、マウスレイヤーをカチッとON/OFF（トグル）切り替え */
         combo_mouse_toggle {
             timeout-ms = <50>;
             key-positions = <6 7>;
@@ -292,7 +292,7 @@
             >;
         };
 
-        /* ✨ 3D/2Dクリエイター特化レイヤー（手動トグル固定型） */
+        /* ✨ 3D/2Dクリエイター特化レイヤー（手動トグル固定型・エラー修正済） */
         layer3 {
             label = "MOUSE";
             bindings = <
