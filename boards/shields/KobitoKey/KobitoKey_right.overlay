@@ -45,19 +45,25 @@
     pinctrl-names = "default", "sleep";
     cs-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
     
-    tb_right: trackball@0 {
+tb_right: trackball@0 {
         status = "okay";
-        compatible = "pixart,pmw3610";
+        compatible = "pixart,pmw3610-alt"; /* 💡 公式から alt 版に切り替え */
         reg = <0>;
         spi-max-frequency = <2000000>;
         
-        /* 公式ドライバー仕様に適合 */
-        motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        zephyr,axis-x = <INPUT_REL_X>;
-        zephyr,axis-y = <INPUT_REL_Y>;
-        res-cpi = <400>;
-/* ❌ smart-mode; はノイズで泳ぐ原因になるため完全に削除！ */
-/* ✨ これを復活！センサーを常時起動にして、スリープ移行時の泳ぎを完全に消し去ります */
+        /* 💡 割り込みピンの指定名が変わります（元の &gpio0 2 の配線はそのまま引き継ぎます） */
+        irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        
+        /* 💡 解像度の指定名が変わります。OS側の加速を無効化したため、
+              ここは 1000 や 1200 あたりの高めで滑らかな数値にするのがオススメです */
+        cpi = <1000>; 
+        
+        /* 💡 alt版に必要な入力イベントの定義を追加します */
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
+        
+        /* ✨ 常時覚醒もalt版でしっかりサポートされているので残します */
         force-awake;
     };
 };
