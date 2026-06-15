@@ -29,19 +29,19 @@
     pinctrl-names = "default", "sleep";
     cs-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 
-    tb_left: trackball@0 {
+tb_left: trackball@0 {
         status = "okay";
-        compatible = "pixart,pmw3610";
+        compatible = "pixart,pmw3610-alt"; /* 💡 alt に変更 */
         reg = <0>;
         spi-max-frequency = <2000000>;
         
-        /* 割り込みピンと軸マッピング、解像度、スマートモードを新仕様に適合 */
-        motion-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        zephyr,axis-x = <INPUT_REL_X>;
-        zephyr,axis-y = <INPUT_REL_Y>;
-        res-cpi = <400>;
-/* ❌ smart-mode; はノイズで泳ぐ原因になるため完全に削除！ */
-/* ✨ 左側も常時起動化して安定させます */
+        irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        cpi = <200>; /* 💡 スクロール用なので200〜400の低めでOKです */
+        
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
+        
         force-awake;
     };
 };
