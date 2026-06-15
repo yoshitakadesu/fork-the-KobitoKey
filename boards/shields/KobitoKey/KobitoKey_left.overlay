@@ -89,11 +89,12 @@ tb_left: trackball@0 {
     status = "okay";
     device = <&tb_right_split>;
     
-    /* 💡 右手の24度回転補正を行った直後に、上下左右の入れ替え（SWAP）と反転（Y_INVERT）を
-          この場所で順番通りに一括処理させます */
     input-processors = 
-        <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT | INPUT_TRANSFORM_X_INVERT),
-        <&sensor_rotation_right>>;
+        /* 1. まず全ての変換（縦横入れ替え・上下反転・左右反転）をここで一気に終わらせます */
+        <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT | INPUT_TRANSFORM_X_INVERT)>,
+        
+        /* 2. 画面と100%一致した軸に対して、最後に角度の微調整をかけます */
+        <&sensor_rotation_right>;
 };
 
 /* &zip_temp_layer {
