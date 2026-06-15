@@ -93,7 +93,7 @@ tb_left: trackball@0 {
           この場所で順番通りに一括処理させます */
     input-processors = 
         <&sensor_rotation_right>,
-        <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>;
+        <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT | INPUT_TRANSFORM_X_INVERT)>;
 };
 
 /* &zip_temp_layer {
