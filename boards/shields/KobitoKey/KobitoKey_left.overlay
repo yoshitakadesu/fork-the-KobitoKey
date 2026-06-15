@@ -92,8 +92,8 @@ tb_left: trackball@0 {
     /* 💡 右手の24度回転補正を行った直後に、上下左右の入れ替え（SWAP）と反転（Y_INVERT）を
           この場所で順番通りに一括処理させます */
     input-processors = 
-        <&sensor_rotation_right>,
-        <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT | INPUT_TRANSFORM_X_INVERT)>;
+        <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT | INPUT_TRANSFORM_X_INVERT),
+        <&sensor_rotation_right>>;
 };
 
 /* &zip_temp_layer {
