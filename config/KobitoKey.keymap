@@ -97,6 +97,12 @@
             key-positions = <20 21>;
         };
 
+        combo_ctrl_tab {
+            timeout-ms = <50>;
+            key-positions = <21 22>;  
+            bindings = <&kp LC(TAB)>;  
+        };
+
         combo_capwords {
             bindings = <&caps_word>;
             key-positions = <3 4>;
