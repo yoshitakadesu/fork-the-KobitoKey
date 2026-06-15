@@ -8,6 +8,10 @@ manifest:
       url-base: https://github.com/caksoylar  
     - name: prospector
       url-base: https://github.com/t-ogura
+    
+    /* ✨ 1. ここを追加：badjeffさんのGitHubの場所を登録します */
+    - name: badjeff
+      url-base: https://github.com/badjeff
 
   projects:
     # ZMK 本体
@@ -30,6 +34,11 @@ manifest:
     - name: prospector-zmk-module
       remote: prospector
       revision: main
+      
+    /* ✨ 2. ここを追加：ZMK 4.1対応の泳ぎ対策カスタムドライバーを読み込ませます */
+    - name: zmk-pmw3610-driver
+      remote: badjeff
+      revision: zmk-0.4
       
   self:
     path: config
