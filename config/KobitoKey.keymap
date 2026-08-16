@@ -38,11 +38,11 @@
     combos {
         compatible = "zmk,combos";
 
-        /* ✨ 右手の上段「U + I」の同時押しで、マウスレイヤーをカチッとON/OFF（トグル）切り替え */
-        combo_mouse_toggle {
+        /* ✨ 左手「R + T」の同時押ししている間だけ、マウスレイヤー（Layer 3）を起動 */
+        combo_mouse_momentary {
             timeout-ms = <50>;
-            key-positions = <6 7>;
-            bindings = <&tog 3>;
+            key-positions = <3 4>;
+            bindings = <&mo 3>;
         };
 
         combo_eisu {
@@ -95,11 +95,6 @@
             timeout-ms = <50>;
             key-positions = <21 22>;  
             bindings = <&kp LC(TAB)>;  
-        };
-
-        combo_capwords {
-            bindings = <&caps_word>;
-            key-positions = <3 4>;
         };
     };
 
@@ -292,7 +287,6 @@
             >;
         };
 
-        /* ✨ 3D/2Dクリエイター特化レイヤー（手動トグル固定型・エラー修正済） */
         layer3 {
             label = "MOUSE";
             bindings = <
