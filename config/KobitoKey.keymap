@@ -287,13 +287,14 @@
             >;
         };
 
+/* ✨ 3D/2Dクリエイター特化レイヤー（修飾キー直接配置版） */
         layer3 {
             label = "MOUSE";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans     &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
+&trans    &trans    &trans    &trans     &trans  &trans  &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans     &trans  &trans  &trans    &trans    &trans    &trans
+&kp LCMD  &kp LALT  &kp LSHFT &kp LCTRL  &trans  &trans  &trans    &trans    &trans    &trans
             >;
         };
     };
