@@ -38,10 +38,10 @@
     combos {
         compatible = "zmk,combos";
 
-        /* ✨ 左手「R + T」の同時押ししている間だけ、マウスレイヤー（Layer 3）を起動 */
+        /* ✨ 左手「Q + W」の同時押ししている間だけ、マウスレイヤー（Layer 3）を起動 */
         combo_mouse_momentary {
             timeout-ms = <50>;
-            key-positions = <3 4>;
+            key-positions = <0 1>;
             bindings = <&mo 3>;
         };
 
@@ -59,7 +59,7 @@
 
         combo_esc {
             timeout-ms = <60>;
-            key-positions = <0 1>;
+            key-positions = <3 4>;
             bindings = <&kp ESC>;
         };
 
@@ -291,10 +291,10 @@
         layer3 {
             label = "MOUSE";
             bindings = <
-&trans    &trans    &trans     &trans       &trans     &mkp MB1  &mkp MB3  &mkp MB2  &trans    &trans
-&trans    &trans    &trans     &trans       &trans     &trans  &trans    &trans      &trans    &trans
-&trans    &trans    &trans     &trans       &trans     &trans  &trans    &trans      &trans    &trans
-&kp LCMD  &kp LALT  &kp LSHFT  &lt 2 SPACE  &kp LCTRL  &trans  &trans    &trans      &trans    &trans
+&trans     &trans    &trans     &trans       &trans     &mkp MB1  &mkp MB3  &mkp MB2  &trans    &trans
+&trans     &trans    &trans     &trans       &trans     &trans  &trans    &trans      &trans    &trans
+&trans     &trans    &trans     &trans       &trans     &trans  &trans    &trans      &trans    &trans
+&kp RCTRL  &kp LALT  &kp LSHFT  &lt 2 SPACE  &kp LCTRL  &trans  &trans    &trans      &trans    &trans
             >;
         };
     };
